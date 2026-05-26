@@ -62,7 +62,3 @@ class TinyResNet(nn.Module):
         return(self.head(x))
 
 
-net = TinyResNet()
-x = torch.randn(1, 3, 32, 32)
-print(f"output: {net(x).shape}")
-print(f"params: {sum(p.numel() for p in net.parameters())}")
