@@ -1,5 +1,5 @@
 from classifier import synthetic_cifar, ArrayDataset
-from classifier import standardize, random_hflip, random_crop, compose
+from classifier import standardize, random_hflip, random_crop, compose, cutout
 from classifier import mixup_batch, soft_cross_entropy
 from classifier import train_one_epoch, evaluate
 import torch
@@ -8,7 +8,8 @@ from TinyResNet import TinyResNet
 from torch.optim import SGD
 import torch.nn as nn
 from torch.optim.lr_scheduler import CosineAnnealingLR
-
+import matplotlib.pyplot as plt 
+#from utils import cutout
 
 X, Y = synthetic_cifar(num_per_class=500)
 split = int(0.9 * len(X))
@@ -17,7 +18,7 @@ X_val, Y_val = X[split:], Y[split:]
 
 mean = [0.5, 0.5, 0.5]
 std = [0.25, 0.25, 0.25]
-train_tf = compose(random_hflip(), random_crop(pad=4), standardize(mean, std))
+train_tf = compose(random_hflip(), random_crop(pad=4))
 eval_tf = standardize(mean, std)
 
 train_ds = ArrayDataset(X_train, Y_train, transform=train_tf)
@@ -31,9 +32,16 @@ model = TinyResNet(num_classes=10).to(device)
 optimizer = SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=5e-4, nesterov=True)
 scheduler = CosineAnnealingLR(optimizer, T_max=10)
 
-for epoch in range(10):
+print("Training the Classifier without Mixup...")
+
+train_loss = []
+val_loss = []
+
+for epoch in range(5):
     tr_loss, tr_acc = train_one_epoch(model, train_loader, optimizer, device, 10, use_mixup=True)
     va_loss, va_acc, _ = evaluate(model, val_loader, device, 10)
+    train_loss.append(tr_loss)
+    val_loss.append(va_loss)
     scheduler.step()
     print(f"epoch {epoch:2d}  lr {scheduler.get_last_lr()[0]:.4f}  "
           f"train {tr_loss:.3f}/{tr_acc:.3f}  val {va_loss:.3f}/{va_acc:.3f}")
@@ -58,3 +66,15 @@ def print_confusion(cm, labels=None):
 
 _, _, cm = evaluate(model, val_loader, device, 10)
 print_confusion(cm)
+
+epochs = range(1, len(train_loss) + 1)
+plt.plot(epochs, train_loss, label='Training Loss')
+plt.plot(epochs, val_loss, label='Validation Loss')
+plt.title('Model without mixup Loss Curves')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+
+plt.savefig('hflip+crop+mixup.png', dpi=300, bbox_inches='tight')
+plt.close()
+

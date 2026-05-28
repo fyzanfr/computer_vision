@@ -45,6 +45,24 @@ class ArrayDataset(Dataset):
 
 
 # -- Normalization and Augumentation:
+def cutout(length=8):
+    def _fn(img):
+        h, w = img.shape[:2]
+        mask = np.ones((h, w), np.float32)
+
+        x = np.random.randint(h) 
+        y = np.random.randint(w)
+
+        y1 = np.clip(y - length // 2, 0, h) # bottom-half
+        y2 = np.clip(y + length // 2, 0, h) # top-half
+        x1 = np.clip(x - length // 2, 0, w) # left-half
+        x2 = np.clip(x + length // 2, 0, w) # right-half
+
+        mask[y1:y2, x1:x2] = 0.
+        mask = mask[:, :, np.newaxis]
+        img = img * mask
+        return img
+    return _fn
 
 def standardize(mean, std):
     mean = np.array(mean, dtype=np.float32)
