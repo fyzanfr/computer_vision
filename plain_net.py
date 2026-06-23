@@ -70,3 +70,7 @@ net = TinyResNet()
 x = torch.randn(1, 3, 32, 32)
 print(f"output: {net(x).shape}")
 print(f"params: {sum(p.numel() for p in net.parameters())}")
+
+
+
+# Testing the webhook connected to the codebase-rag works properly, i think this shoudl do it..
