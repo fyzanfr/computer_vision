@@ -74,11 +74,6 @@ print(f"params: {sum(p.numel() for p in net.parameters())}")
 
 
 
-#this is dante's inferno (for testing purposes)!!.
-#At first in motion set those beauteous things;
-#So were to me occasion of good hope,
-#The variegated skin of that wild beast,
-#The hour of time, and the delicious season;
 
 #She brought upon me so much heaviness,
 #With the affright that from her aspect came,
