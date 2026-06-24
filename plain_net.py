@@ -79,3 +79,16 @@ print(f"params: {sum(p.numel() for p in net.parameters())}")
 #So were to me occasion of good hope,
 #The variegated skin of that wild beast,
 #The hour of time, and the delicious season;
+
+#She brought upon me so much heaviness,
+#With the affright that from her aspect came,
+#That I the hope relinquished of the height.
+#And as he is who willingly acquires,
+#And the time comes that causes him to lose,
+#Who weeps in all his thoughts and is despondent,
+#E’en such made me that beast withouten peace,
+#Which, coming on against me by degrees
+#Thrust me back thither where the sun is silent 16
+#While I was rushing downward to the lowland,
+#Before mine eyes did one present himself,
+#Who seemed from long-continued silence hoarse
