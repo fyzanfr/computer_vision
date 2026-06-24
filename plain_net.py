@@ -73,15 +73,9 @@ print(f"params: {sum(p.numel() for p in net.parameters())}")
 
 
 
-# Testing the webhook connected to the codebase-rag works properly
 
 #this is dante's inferno (for testing purposes)!!.
 #At first in motion set those beauteous things;
 #So were to me occasion of good hope,
 #The variegated skin of that wild beast,
 #The hour of time, and the delicious season;
-#But not so much, that did not give me fear
-#A lion’s aspect which appeared to me. 13
-#He seemed as if against me he were coming
-#With head uplifted, and with ravenous hunger,
-#So that it seemed the air was afraid of him;
