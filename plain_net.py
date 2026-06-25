@@ -80,7 +80,3 @@ print(f"params: {sum(p.numel() for p in net.parameters())}")
 #That I the hope relinquished of the height.
 #And as he is who willingly acquires,
 #And the time comes that causes him to lose,
-#Who weeps in all his thoughts and is despondent,
-#E’en such made me that beast withouten peace,
-#Which, coming on against me by degrees
-#Thrust me back thither where the sun is silent 16
