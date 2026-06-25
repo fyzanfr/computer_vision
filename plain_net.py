@@ -83,10 +83,4 @@ print(f"params: {sum(p.numel() for p in net.parameters())}")
  #       for _ in range(block_num - 1):
  #           blocks.append(block_class(in_c, out_c, stride=1))
  #       layers.append(nn.Sequential(*blocks))
- #   head = nn.Sequential(
- #           nn.AdaptiveAvgPool2d(1),
- #           nn.Flatten(),
- #           nn.Linear(512, num_classes),
- #           )
- #   return nn.Sequential(stem, *layers, head)
 
