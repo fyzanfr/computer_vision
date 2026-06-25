@@ -77,6 +77,3 @@ print(f"params: {sum(p.numel() for p in net.parameters())}")
 
 #She brought upon me so much heaviness,
 #With the affright that from her aspect came,
-#That I the hope relinquished of the height.
-#And as he is who willingly acquires,
-#And the time comes that causes him to lose,
