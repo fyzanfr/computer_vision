@@ -84,6 +84,3 @@ print(f"params: {sum(p.numel() for p in net.parameters())}")
 #E’en such made me that beast withouten peace,
 #Which, coming on against me by degrees
 #Thrust me back thither where the sun is silent 16
-#While I was rushing downward to the lowland,
-#Before mine eyes did one present himself,
-#Who seemed from long-continued silence hoarse
